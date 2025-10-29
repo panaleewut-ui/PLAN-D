@@ -45,7 +45,7 @@ function calculateTDEE() {
 
 // แสดงผลใน result.html
 window.onload = function() {
-  const finalTdee = localStorage.getItem("tdeeFinal");
+  const tdeeFinal = localStorage.getItem("tdeeFinal");
   if (tdeeFinal && document.getElementById("tdeeResult")) 
     document.getElementById("tdeeResult").innerText = `TDEE ของคุณคือ ${tdeeFinal} kcal`;
 
@@ -76,6 +76,7 @@ function goBack() {
   window.location.href = "form.html";
 
 }
+
 
 
 
