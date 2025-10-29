@@ -5,6 +5,7 @@ function calculateTDEE() {
   const height = parseFloat(document.getElementById("height").value);
   const age = parseFloat(document.getElementById("age").value);
   const activity = parseFloat(document.getElementById("activity").value);
+  const goal = document.getElementById("goal").value;
 
   if (!weight || !height || !age) {
     alert("กรุณากรอกข้อมูลให้ครบ");
@@ -20,9 +21,6 @@ function calculateTDEE() {
 
   const tdee = Math.round(bmr * activity);
 
-// รับค่า goal จาก dropdown
-  const goal = document.getElementById("goal").value;
-
   let finalTdee = tdee;
   let goalText = "คงน้ำหนัก";
 
@@ -35,9 +33,11 @@ function calculateTDEE() {
 }
 
 // เก็บค่าลง localStorage เพื่อไปใช้หน้า result.html
+  localStorage.setItem("tdee", tdee);
   localStorage.setItem("tdeeFinal", finalTdee);
   localStorage.setItem("goalText", goalText);
-  localStorage.setItem("tdee", tdee);
+
+// เปลี่ยนหน้า หลังจากเก็บค่าเรียบร้อย
   window.location.href = "result.html";
   
 }
@@ -75,6 +75,7 @@ function goBack() {
   window.location.href = "form.html";
 
 }
+
 
 
 
