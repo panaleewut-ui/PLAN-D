@@ -13,9 +13,9 @@ function calculateTDEE() {
 
   let bmr;
   if (gender === "male") {
-    bmr = 66 + (13.7 * weight) + (5 * height) - (6.8 * age);
+    bmr = 66.5 + (13.8 * weight) + (5 * height) - (6.8 * age);
   } else {
-    bmr = 655 + (9.6 * weight) + (1.8 * height) - (4.7 * age);
+    bmr = 655.1 + (9.6 * weight) + (1.9 * height) - (4.7 * age);
   }
 
   const tdee = Math.round(bmr * activity);
@@ -26,7 +26,7 @@ function calculateTDEE() {
 // แสดงผลใน result.html
 window.onload = function() {
   const tdee = localStorage.getItem("tdee");
-  if (tdee && document.getElementById("tdeeResult")) {
+  if (tdee && document.getElementById("tdeeResult")) 
     document.getElementById("tdeeResult").innerText = `TDEE ของคุณคือ ${tdee} kcal`;
 
     // ตัวอย่างข้อมูลจำลอง (ฐานข้อมูลจะมาแทนที่)
@@ -55,4 +55,5 @@ window.onload = function() {
 
 function goBack() {
   window.location.href = "form.html";
+
 }
