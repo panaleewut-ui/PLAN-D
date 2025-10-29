@@ -34,24 +34,9 @@
   </div>
 
   <script src="script.js"></script>
-  <script>
-  // ดึงข้อมูลจาก localStorage
-    const tdeeFinal = parseFloat(localStorage.getItem("tdeeFinal")) || 0;
-    const goalText = localStorage.getItem("goalText") ||"คงน้ำหนัก";
-    const weight = parseFloat(localStorage.getItem("weight")) || 60;
 
-  // คำนวณโปรตีนตามน้ำหนักตัว
-    const proteinNeed = weight * 1; // ปรับอัตราได้ตามต้องการ
-
-  // แสดงข้อความผลลัพธ์
-    document.getElementById("goalResult").textContent = `เป้าหมาย: ${goalText}`;
-    document.getElementById("tdeeResult").textContent = `พลังงานที่ใช้คำนวณ (TDEE ปรับแล้ว): ${tdeeFinal.toFixed(0)} kcal`;
-
-  // หาข้อมูลจากฐานข้อมูลและแสดงผล
-    const plan = findPlanByTdeeAndProtein(tdeeFinal, proteinNeed);
-    renderPortionsTable(plan, "foodTableContainer");
- </script>
 </body>
 
 </html>
+
 
