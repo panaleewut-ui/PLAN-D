@@ -36,7 +36,8 @@ function calculateTDEE() {
   localStorage.setItem("tdee", tdee);
   localStorage.setItem("tdeeFinal", finalTdee);
   localStorage.setItem("goalText", goalText);
-
+  localStorage.setItem("weight", weight);
+  
 // เปลี่ยนหน้า หลังจากเก็บค่าเรียบร้อย
   window.location.href = "result.html";
   
@@ -75,6 +76,7 @@ function goBack() {
   window.location.href = "form.html";
 
 }
+
 
 
 
