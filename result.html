@@ -9,7 +9,11 @@
 <body>
   <div class="container">
     <h2>ผลลัพธ์ของคุณ</h2>
-    <p id="tdeeResult">TDEE ของคุณคือ ... kcal</p>
+    <div class="results">
+      <p id="goalResult"></p>
+      <p id="tdeeResult"></p>
+    <div id="foodTableContainer"></div>
+  </div>
 
     <h3>ส่วนของอาหารตามหมวด (ตัวอย่างการแสดงผล)</h3>
     <table>
@@ -30,5 +34,23 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+  // ดึงข้อมูลจาก localStorage
+    const tdeeFinal = parseFloat(localStorage.getItem("tdeeFinal"));
+    const goalText = localStorage.getItem("goalText");
+    const weight = parseFloat(localStorage.getItem("weight")) || 60;
+
+  // คำนวณโปรตีนตามน้ำหนักตัว
+    const proteinNeed = weight * 1.1; // ปรับอัตราได้ตามต้องการ
+
+  // แสดงข้อความผลลัพธ์
+    document.getElementById("goalResult").textContent = `เป้าหมาย: ${goalText}`;
+    document.getElementById("tdeeResult").textContent = `พลังงานที่ใช้คำนวณ (TDEE ปรับแล้ว): ${tdeeFinal.toFixed(0)} kcal`;
+
+  // หาข้อมูลจากฐานข้อมูลและแสดงผล
+    const plan = findPlanByTdeeAndProtein(tdeeFinal, proteinNeed);
+    renderPortionsTable(plan, "foodTableContainer");
+ </script>
 </body>
+
 </html>
