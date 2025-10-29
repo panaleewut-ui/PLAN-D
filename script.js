@@ -21,6 +21,25 @@ function calculateTDEE() {
   const tdee = Math.round(bmr * activity);
   localStorage.setItem("tdee", tdee);
   window.location.href = "result.html";
+
+// รับค่า goal จาก dropdown
+  const goal = document.getElementById("goal").value;
+
+  let finalTdee = tdee;
+  let goalText = "คงน้ำหนัก";
+
+  if (goal === "lose") {
+  finalTdee = tdee - 500;
+  goalText = "ลดน้ำหนัก";
+} else if (goal === "gain") {
+  finalTdee = tdee + 500;
+  goalText = "เพิ่มน้ำหนัก";
+}
+
+// เก็บค่าลง localStorage เพื่อไปใช้หน้า result.html
+  localStorage.setItem("tdeeFinal", finalTdee);
+  localStorage.setItem("goalText", goalText);
+  
 }
 
 // แสดงผลใน result.html
@@ -56,5 +75,6 @@ function goBack() {
   window.location.href = "form.html";
 
 }
+
 
 
