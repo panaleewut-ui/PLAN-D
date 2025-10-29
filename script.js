@@ -50,10 +50,11 @@ window.onload = function() {
       `;
       tbody.appendChild(tr);
     });
-  }
+  };
 
 function goBack() {
   window.location.href = "form.html";
 
 }
+
 
