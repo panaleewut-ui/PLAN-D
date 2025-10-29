@@ -19,8 +19,6 @@ function calculateTDEE() {
   }
 
   const tdee = Math.round(bmr * activity);
-  localStorage.setItem("tdee", tdee);
-  window.location.href = "result.html";
 
 // รับค่า goal จาก dropdown
   const goal = document.getElementById("goal").value;
@@ -39,6 +37,8 @@ function calculateTDEE() {
 // เก็บค่าลง localStorage เพื่อไปใช้หน้า result.html
   localStorage.setItem("tdeeFinal", finalTdee);
   localStorage.setItem("goalText", goalText);
+  localStorage.setItem("tdee", tdee);
+  window.location.href = "result.html";
   
 }
 
@@ -75,6 +75,7 @@ function goBack() {
   window.location.href = "form.html";
 
 }
+
 
 
 
