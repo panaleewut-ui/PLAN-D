@@ -45,9 +45,9 @@ function calculateTDEE() {
 
 // แสดงผลใน result.html
 window.onload = function() {
-  const tdee = localStorage.getItem("tdee");
-  if (tdee && document.getElementById("tdeeResult")) 
-    document.getElementById("tdeeResult").innerText = `TDEE ของคุณคือ ${tdee} kcal`;
+  const tdee = localStorage.getItem("tdeeFinal");
+  if (tdeeFinal && document.getElementById("tdeeResult")) 
+    document.getElementById("tdeeResult").innerText = `TDEE ของคุณคือ ${tdeeFinal} kcal`;
 
     // ตัวอย่างข้อมูลจำลอง (ฐานข้อมูลจะมาแทนที่)
     const foodData = [
@@ -76,6 +76,7 @@ function goBack() {
   window.location.href = "form.html";
 
 }
+
 
 
 
