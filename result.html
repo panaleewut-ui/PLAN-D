@@ -36,12 +36,12 @@
   <script src="script.js"></script>
   <script>
   // ดึงข้อมูลจาก localStorage
-    const tdeeFinal = parseFloat(localStorage.getItem("tdeeFinal"));
-    const goalText = localStorage.getItem("goalText");
+    const tdeeFinal = parseFloat(localStorage.getItem("tdeeFinal")) || 0;
+    const goalText = localStorage.getItem("goalText") ||"คงน้ำหนัก";
     const weight = parseFloat(localStorage.getItem("weight")) || 60;
 
   // คำนวณโปรตีนตามน้ำหนักตัว
-    const proteinNeed = weight * 1.1; // ปรับอัตราได้ตามต้องการ
+    const proteinNeed = weight * 1; // ปรับอัตราได้ตามต้องการ
 
   // แสดงข้อความผลลัพธ์
     document.getElementById("goalResult").textContent = `เป้าหมาย: ${goalText}`;
@@ -54,3 +54,4 @@
 </body>
 
 </html>
+
