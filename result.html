@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ผลลัพธ์ PLAN :D</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>ผลลัพธ์ของคุณ</h2>
+    <p id="tdeeResult">TDEE ของคุณคือ ... kcal</p>
+
+    <h3>ส่วนของอาหารตามหมวด (ตัวอย่างการแสดงผล)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>หมวดอาหาร</th>
+          <th>จำนวนส่วน (ทั้งวัน)</th>
+          <th>แบ่ง 3 มื้อ</th>
+          <th>แบ่ง 2 มื้อ</th>
+        </tr>
+      </thead>
+      <tbody id="foodTable">
+        <!-- ผลลัพธ์จากฐานข้อมูลจะถูกใส่ตรงนี้ -->
+      </tbody>
+    </table>
+
+    <button onclick="goBack()">ย้อนกลับ</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

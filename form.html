@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>กรอกข้อมูลพื้นฐาน</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>ข้อมูลพื้นฐาน</h2>
+
+    <form id="infoForm">
+      <div class="form-group">
+        <label>อายุ (ปี)</label>
+        <input type="number" id="age" placeholder="กรอกอายุของคุณ">
+      </div>
+
+      <div class="form-group">
+        <label>เพศ</label>
+        <select id="gender">
+          <option value="male">ชาย</option>
+          <option value="female">หญิง</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>น้ำหนัก (กิโลกรัม)</label>
+        <input type="number" id="weight" placeholder="เช่น 55">
+      </div>
+
+      <div class="form-group">
+        <label>ส่วนสูง (เซนติเมตร)</label>
+        <input type="number" id="height" placeholder="เช่น 160">
+      </div>
+
+      <div class="form-group">
+        <label>ระดับกิจกรรม</label>
+        <select id="activity">
+          <option value="1.2">พักผ่อน / นั่งเฉย</option>
+          <option value="1.375">กิจกรรมเบา</option>
+          <option value="1.55">กิจกรรมปานกลาง</option>
+          <option value="1.725">กิจกรรมหนัก</option>
+        </select>
+      </div>
+
+      <button type="button" onclick="calculateTDEE()">คำนวณ</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
