@@ -45,9 +45,18 @@ function calculateTDEE() {
 
 // แสดงผลใน result.html
 window.onload = function() {
-  const tdeeFinal = parseFloat(localStorage.getItem("tdeeFinal"));
-  if (tdeeFinal && document.getElementById("tdeeResult")) 
-    document.getElementById("tdeeResult").innerText = `TDEE ของคุณคือ ${tdeeFinal} kcal`;
+  const tdeeFinal = parseFloat(localStorage.getItem("tdeeFinal")) || 0;
+  const goalText = localStorage.getItem("goalText") || "คงน้ำหนัก";
+  const weight = parseFloat(localStorage.getItem("weight")) || 60;
+
+  if (document.getElementById("goalResult")) {
+    document.getElementById("goalResult").textContent = `เป้าหมาย: ${goalText}`;
+  }
+
+  if (document.getElementById("tdeeResult")) {
+    document.getElementById("tdeeResult").textContent = 
+      `พลังงานที่ใช้คำนวณ (TDEE ปรับแล้ว): ${tdeeFinal.toFixed(0)} kcal`;
+  }
 
     // ตัวอย่างข้อมูลจำลอง (ฐานข้อมูลจะมาแทนที่)
     const foodData = [
@@ -76,6 +85,7 @@ function goBack() {
   window.location.href = "form.html";
 
 }
+
 
 
 
