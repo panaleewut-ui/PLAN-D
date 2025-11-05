@@ -59,38 +59,36 @@ function findFoodPlan(tdee, weight) {
 
 // แสดงผลใน result.html
 window.onload = function() {
-  const tdeeFinal = parseFloat(localStorage.getItem("tdeeFinal")) || 0;
+  const tdee = parseFloat(localStorage.getItem("tdeeFinal")) || 0;
   const goalText = localStorage.getItem("goalText") || "คงน้ำหนัก";
   const weight = parseFloat(localStorage.getItem("weight")) || 60;
 
-  if (document.getElementById("goalResult")) {
+  if (!tdee) return;
+  
     document.getElementById("goalResult").textContent = `เป้าหมาย: ${goalText}`;
-  }
+    document.getElementById("tdeeResult").textContent = `TDEE: ${tdee} kcal`;
 
-  if (document.getElementById("tdeeResult")) {
-    document.getElementById("tdeeResult").textContent = 
-      `พลังงานที่ใช้คำนวณ (TDEE ปรับแล้ว): ${tdeeFinal.toFixed(0)} kcal`;
-  }
-
-
-
+    const plan = findFoodPlan(tdee, weight);
     const tbody = document.getElementById("foodTable");
-    foodData.forEach(f => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${f.type}</td>
-        <td>${f.total}</td>
-        <td>${(f.total/3).toFixed(1)}</td>
-        <td>${(f.total/2).toFixed(1)}</td>
-      `;
-      tbody.appendChild(tr);
-    });
-  };
 
-function goBack() {
-  window.location.href = "form.html";
+  if (!plan) {
+    tbody.innerHTML = `<tr><td colspan="4">ยังไม่มีข้อมูลชุดนี้</td></tr>`;
+    return;
+  }
 
-}
+  plan.portions.forEach(item => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${item.type}</td>
+      <td>${item.total}</td>
+      <td>${(item.total / 3).toFixed(1)}</td>
+      <td>${(item.total / 2).toFixed(1)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+};
+
+window.calculateTDEE = calculateTDEE;
 
 
 
