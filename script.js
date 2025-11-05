@@ -1,5 +1,5 @@
 // ✅ ฟังก์ชันคำนวณ TDEE
-function calculatePlan() {
+function calculateTDEE() {
   const gender = document.getElementById("gender").value;
   const weight = parseFloat(document.getElementById("weight").value);
   const height = parseFloat(document.getElementById("height").value);
@@ -82,4 +82,5 @@ window.onload = function () {
 };
 
 // ✅ ให้ HTML ใช้งานฟังก์ชันนี้ได้
-window.calculatePlan = calculatePlan;
+window.calculateTDEE = calculateTDEE;
+
