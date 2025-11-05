@@ -1,3 +1,5 @@
+import foodPlans from ".data.js";
+
 // คำนวณ TDEE
 function calculateTDEE() {
   const gender = document.getElementById("gender").value;
@@ -43,6 +45,18 @@ function calculateTDEE() {
   
 }
 
+// ✅ เลือก portion ตาม TDEE & โปรตีน (โปรตีนน้ำหนัก x 1.0 )
+function findFoodPlan(tdee, weight) {
+  const proteinNeed = weight * 1.0; 
+
+  return foodPlans.find(plan =>
+    tdee >= plan.energyRange[0] &&
+    tdee <= plan.energyRange[1] &&
+    proteinNeed >= plan.proteinRange[0] &&
+    proteinNeed <= plan.proteinRange[1]
+  );
+}
+
 // แสดงผลใน result.html
 window.onload = function() {
   const tdeeFinal = parseFloat(localStorage.getItem("tdeeFinal")) || 0;
@@ -58,15 +72,7 @@ window.onload = function() {
       `พลังงานที่ใช้คำนวณ (TDEE ปรับแล้ว): ${tdeeFinal.toFixed(0)} kcal`;
   }
 
-    // ตัวอย่างข้อมูลจำลอง (ฐานข้อมูลจะมาแทนที่)
-    const foodData = [
-      { type: "ข้าว-แป้ง", total: 6 },
-      { type: "เนื้อสัตว์", total: 3 },
-      { type: "ผัก", total: 4 },
-      { type: "ผลไม้", total: 2 },
-      { type: "นม", total: 1 },
-      { type: "ไขมัน", total: 3 },
-    ];
+
 
     const tbody = document.getElementById("foodTable");
     foodData.forEach(f => {
@@ -85,6 +91,7 @@ function goBack() {
   window.location.href = "form.html";
 
 }
+
 
 
 
