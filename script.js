@@ -1,7 +1,5 @@
-import foodPlans from ".data.js";
-
-// คำนวณ TDEE
-function calculateTDEE() {
+// ✅ ฟังก์ชันคำนวณ TDEE
+function calculatePlan() {
   const gender = document.getElementById("gender").value;
   const weight = parseFloat(document.getElementById("weight").value);
   const height = parseFloat(document.getElementById("height").value);
@@ -22,32 +20,27 @@ function calculateTDEE() {
   }
 
   const tdee = Math.round(bmr * activity);
-
   let finalTdee = tdee;
   let goalText = "คงน้ำหนัก";
 
   if (goal === "lose") {
-  finalTdee = tdee - 500;
-  goalText = "ลดน้ำหนัก";
-} else if (goal === "gain") {
-  finalTdee = tdee + 500;
-  goalText = "เพิ่มน้ำหนัก";
-}
+    finalTdee = tdee - 500;
+    goalText = "ลดน้ำหนัก";
+  } else if (goal === "gain") {
+    finalTdee = tdee + 500;
+    goalText = "เพิ่มน้ำหนัก";
+  }
 
-// เก็บค่าลง localStorage เพื่อไปใช้หน้า result.html
-  localStorage.setItem("tdee", tdee);
   localStorage.setItem("tdeeFinal", finalTdee);
   localStorage.setItem("goalText", goalText);
   localStorage.setItem("weight", weight);
-  
-// เปลี่ยนหน้า หลังจากเก็บค่าเรียบร้อย
+
   window.location.href = "result.html";
-  
 }
 
-// ✅ เลือก portion ตาม TDEE & โปรตีน (โปรตีนน้ำหนัก x 1.0 )
+// ✅ หาแผนอาหารจาก kcal ช่วง + โปรตีน
 function findFoodPlan(tdee, weight) {
-  const proteinNeed = weight * 1.0; 
+  const proteinNeed = weight * 1.0;
 
   return foodPlans.find(plan =>
     tdee >= plan.energyRange[0] &&
@@ -57,19 +50,19 @@ function findFoodPlan(tdee, weight) {
   );
 }
 
-// แสดงผลใน result.html
-window.onload = function() {
+// ✅ โหลดข้อมูลหน้า result
+window.onload = function () {
+  if (!document.getElementById("foodTable")) return;
+
   const tdee = parseFloat(localStorage.getItem("tdeeFinal")) || 0;
   const goalText = localStorage.getItem("goalText") || "คงน้ำหนัก";
   const weight = parseFloat(localStorage.getItem("weight")) || 60;
 
-  if (!tdee) return;
-  
-    document.getElementById("goalResult").textContent = `เป้าหมาย: ${goalText}`;
-    document.getElementById("tdeeResult").textContent = `TDEE: ${tdee} kcal`;
+  document.getElementById("goalResult").textContent = `เป้าหมาย: ${goalText}`;
+  document.getElementById("tdeeResult").textContent = `TDEE: ${tdee} kcal`;
 
-    const plan = findFoodPlan(tdee, weight);
-    const tbody = document.getElementById("foodTable");
+  const plan = findFoodPlan(tdee, weight);
+  const tbody = document.getElementById("foodTable");
 
   if (!plan) {
     tbody.innerHTML = `<tr><td colspan="4">ยังไม่มีข้อมูลชุดนี้</td></tr>`;
@@ -88,16 +81,5 @@ window.onload = function() {
   });
 };
 
-window.calculateTDEE = calculateTDEE;
-
-
-
-
-
-
-
-
-
-
-
-
+// ✅ ให้ HTML ใช้งานฟังก์ชันนี้ได้
+window.calculatePlan = calculatePlan;
