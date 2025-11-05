@@ -84,3 +84,10 @@ window.onload = function () {
 // ✅ ให้ HTML ใช้งานฟังก์ชันนี้ได้
 window.calculateTDEE = calculateTDEE;
 
+// ✅ Event submit form
+document.getElementById("infoForm")?.addEventListener("submit", function (e) {
+  e.preventDefault();
+  calculateTDEE();
+});
+
+
