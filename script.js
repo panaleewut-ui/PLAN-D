@@ -90,4 +90,5 @@ document.getElementById("infoForm")?.addEventListener("submit", function (e) {
   calculateTDEE();
 });
 
+window.findFoodPlan = findFoodPlan;
 
